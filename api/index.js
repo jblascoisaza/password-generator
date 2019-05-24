@@ -2,8 +2,8 @@ const express = require("express");
 const test = require("./functions/test");
 const bodyParser = require("body-parser");
 
-const app = express();
 const port = 3000;
+const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -33,6 +33,12 @@ app.get("/api/v1/rSpecial", (req, res) => {
   const character = test.rSpecial();
 
   return res.send(character);
+});
+
+app.post("/api/v1/rPassword", (req, res) => {
+  const password = test.rPassword(req.body.pLength);
+
+  return res.send(password);
 });
 
 app.listen(port, () =>

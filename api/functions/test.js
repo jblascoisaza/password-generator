@@ -11,7 +11,7 @@ module.exports = {
     const numbers = [];
 
     for (let index = 1; index <= nLength; index++) {
-      const number = this.rNumber(9, 1);
+      const number = this.rNumber(3, 1);
 
       numbers.push(number);
     }
@@ -38,5 +38,27 @@ module.exports = {
     const character = characters.charAt(number);
 
     return character;
+  },
+  rPassword: function(pLength) {
+    const types = this.rNumbers(pLength);
+    let password;
+
+    for (let index = 1; index <= types.length; index++) {
+      if (types[index] === 1) {
+        const number = this.rNumber(9, 1);
+
+        password += number;
+      } else if (types[index] === 2) {
+        const letter = this.rLetter();
+
+        password += letter;
+      } else {
+        const character = this.rSpecial();
+
+        password += character;
+      }
+    }
+
+    return password;
   }
 };
