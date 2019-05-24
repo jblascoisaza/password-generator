@@ -7,11 +7,11 @@ module.exports = {
 
     return number;
   },
-  rNumbers: function(nLength) {
+  rNumbers: function(nLength, rNumberMax, rNumberMin) {
     const numbers = [];
 
     for (let index = 1; index <= nLength; index++) {
-      const number = this.rNumber(3, 1);
+      const number = this.rNumber(rNumberMax, rNumberMin);
 
       numbers.push(number);
     }
@@ -24,7 +24,7 @@ module.exports = {
 
     const type = this.rNumber(2, 1);
     const number = this.rNumber(26, 0);
-    var letter;
+    let letter = "";
 
     if (type === 1) letter = lower.charAt(number);
     else letter = capital.charAt(number);
@@ -40,8 +40,8 @@ module.exports = {
     return character;
   },
   rPassword: function(pLength) {
-    const types = this.rNumbers(pLength);
-    let password;
+    const types = this.rNumbers(pLength, 3, 1);
+    let password = "";
 
     for (let index = 1; index <= types.length; index++) {
       if (types[index] === 1) {
