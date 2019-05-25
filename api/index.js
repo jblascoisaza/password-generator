@@ -36,7 +36,12 @@ app.get("/api/v1/rSpecial", (req, res) => {
 });
 
 app.post("/api/v1/rPassword", (req, res) => {
-  const password = test.rPassword(req.body.pLength);
+  const password = test.rPassword(
+    req.body.pLength,
+    req.body.n,
+    req.body.l,
+    req.body.s
+  );
 
   return res.send(password);
 });
